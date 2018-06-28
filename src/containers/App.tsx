@@ -1,30 +1,31 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
 import * as ACTIONS from '../actions/actions';
 import * as React from 'react';
 import MainPage from '../components/mainpage/MainPage';
 
-interface Robots {
+interface IRobots {
     id: number,
     name: string,
     username: string,
     email: string
 };
 
-interface AppProps {
+interface IAppProps {
 	query: string,
-	robots: Array<Robots>,
+	robots: IRobots[],
 	actions: any
 };
 
-class App extends React.Component<AppProps> {
+class App extends React.Component<IAppProps> {
 	constructor(props: any) {
 		super(props);
 
 		props.actions.fetchData('https://jsonplaceholder.typicode.com/users');
 	}
 
-	render() {
+	public render() {
 		return <MainPage 
 			query={this.props.query}
 			robots={this.props.robots}

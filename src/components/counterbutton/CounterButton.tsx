@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-interface CounterButtonProps {
+interface ICounterButtonProps {
     color?: string
 };
 
-interface CounterButtonState {
+interface ICounterButtonState {
     count: number
 };
 
-export default class CounterButton extends React.Component<CounterButtonProps, CounterButtonState> {
+export default class CounterButton extends React.Component<ICounterButtonProps, ICounterButtonState> {
     constructor(props: any) {
         super(props);
 
@@ -17,22 +17,24 @@ export default class CounterButton extends React.Component<CounterButtonProps, C
         };
     };
 
-    shouldComponentUpdate(nextProps:any, nextState:any): boolean {
-        if (this.state.count !== nextState.count) return true; 
+    public shouldComponentUpdate(nextProps:any, nextState:any): boolean {
+        if (this.state.count !== nextState.count) { 
+            return true; 
+        } 
         return false;
     };
 
-    updateCount = () => {
+    public updateCount = () => {
         this.setState(prevState => {
             return { count: prevState.count + 1 }
         });
     };
 
-    render() {
+    public render() {
         return (
             <button
-                id='counter'
                 color={this.props.color}
+                id='counter'
                 onClick={this.updateCount} >
                 Count: {this.state.count}
             </button>

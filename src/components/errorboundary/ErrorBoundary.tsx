@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
-class ErrorBoundary extends Component {
-    constructor(props) {
+class ErrorBoundary extends React.Component<{}, { hasError: boolean }> {
+    constructor(props: any) {
         super(props);
 
         this.state = {
@@ -9,11 +9,11 @@ class ErrorBoundary extends Component {
         };
     };
 
-    componentDidCatch = (err, info) => {
+    public componentDidCatch(err: Error, info: any): void {
         this.setState({ hasError: true });
     };
 
-    render() {
+    public render() {
         if (this.state.hasError) {
             return <h1>An error has occurred.</h1>;
         } 

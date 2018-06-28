@@ -1,33 +1,35 @@
 import './MainPage.css';
+
 import CardList from '../cardlist/CardList';
 import ErrorBoundary from '../errorboundary/ErrorBoundary';
 import Header from '../header/Header';
+
 import * as React from 'react';
 import Scroll from '../scroll/Scroll';
 import SearchBox from '../searchbox/SearchBox';
 
-interface Robots {
+interface IRobots {
     id: number,
     name: string,
     username: string,
     email: string
 };
 
-interface MainPageProps {
+interface IMainPageProps {
     query: string,
-    robots: Array<Robots>,
+    robots: IRobots[],
     actions?: any,
     children?: any
 };
 
-export default class MainPage extends React.Component<MainPageProps> {
+export default class MainPage extends React.Component<IMainPageProps> {
     constructor(props: any) {
         super(props);
     }
     
-    filterRobots = (robots: Array<Robots>) => {
+    public filterRobots(robots: IRobots[]): IRobots[] {
         const { query } = this.props;
-        const filteredRobots: Array<Robots> = robots.length ?
+        const filteredRobots: IRobots[] = robots.length ?
             robots.filter(robot => {
                 return robot.name.toLowerCase().includes(query.toLowerCase());
             })
@@ -35,7 +37,7 @@ export default class MainPage extends React.Component<MainPageProps> {
         return filteredRobots;
     }
 
-    render() {
+    public render() {
         const {
             actions,
             robots,

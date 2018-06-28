@@ -1,54 +1,55 @@
 import * as _ACTIONS from './actions';
-import * as _TYPE from "./types";
+import * as _TYPE from './types';
+
 import configureMockStore from 'redux-mock-store';
-import robots from '../utils/robots';
 import thunkMiddleware from 'redux-thunk';
+import robots from '../utils/robots';
 
 const mockStore = configureMockStore([thunkMiddleware]);
 
 describe('Redux actions', () => {
     it('should create an action to set query', () => {
         expect(_ACTIONS.setQuery('testQuery')).toEqual({
-            type: _TYPE.SET_QUERY,
             payload: {
                 query: 'testQuery'
-            }
+            },
+            type: _TYPE.SET_QUERY
         });
     });
 
     it('should create an action to set dataIsFetching', () => {
         expect(_ACTIONS.dataIsFetching(true)).toEqual({
-            type: _TYPE.DATA_IS_FETCHING,
             payload: {
                 dataIsFetching: true
-            }
+            },
+            type: _TYPE.DATA_IS_FETCHING,
         });
     });
 
     it('should create an action to set dataFetchDidErr', () => {
         expect(_ACTIONS.dataFetchDidErr(true)).toEqual({
-            type: _TYPE.DATA_FETCH_DID_ERR,
             payload: {
                 dataFetchDidErr: true
-            }
+            },
+            type: _TYPE.DATA_FETCH_DID_ERR,
         });
     });
 
     it('should create an action to set dataFetchSuccess', () => {
         expect(_ACTIONS.dataFetchSuccess(true)).toEqual({
-            type: _TYPE.DATA_FETCH_SUCCESS,
             payload: {
                 dataFetchSuccess: true
-            }
+            },
+            type: _TYPE.DATA_FETCH_SUCCESS,
         });
     });
 
     it('should create an action to set robots', () => {
         expect(_ACTIONS.populateRobots(robots)).toEqual({
-            type: _TYPE.POPULATE_ROBOTS,
             payload: {
                 robots
-            }
+            },
+            type: _TYPE.POPULATE_ROBOTS,
         });
     });
 
@@ -60,10 +61,10 @@ describe('Redux actions', () => {
         const action = store.getActions();
         
         const expectedAction = {
-            type: _TYPE.DATA_IS_FETCHING,
             payload: {
                 dataIsFetching: true
-            }
+            },
+            type: _TYPE.DATA_IS_FETCHING,
         };
 
         expect(action[0]).toEqual(expectedAction);

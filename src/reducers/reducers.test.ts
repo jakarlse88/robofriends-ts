@@ -17,10 +17,10 @@ describe('searchRobots reducer', () => {
         };
 
         const mockAction = {
-            type: _ACTIONS.SET_QUERY,
             payload: {
                 query: mockQuery
-            }
+            },
+            type: _ACTIONS.SET_QUERY,
         };
 
         expect(_REDUCERS.searchRobots(initialState, mockAction)).toEqual(expectedState);
@@ -28,10 +28,10 @@ describe('searchRobots reducer', () => {
 
     it('should correctly handle action DATA_IS_FETCHING', () => {
         const mockActionTrue = {
-            type: _ACTIONS.DATA_IS_FETCHING,
             payload: {
                 dataIsFetching: true
-            }
+            },
+            type: _ACTIONS.DATA_IS_FETCHING,
         };
 
         const mockActionFalse = {
@@ -54,10 +54,10 @@ describe('searchRobots reducer', () => {
 
     it('should correctly handle action DATA_FETCH_DID_ERR', () => {
         const mockActionTrue = {
-            type: _ACTIONS.DATA_FETCH_DID_ERR,
             payload: {
                 dataFetchDidErr: true
-            }
+            },
+            type: _ACTIONS.DATA_FETCH_DID_ERR,
         };
 
         const mockActionFalse = {
@@ -80,10 +80,10 @@ describe('searchRobots reducer', () => {
 
     it('should correctly handle action DATA_FETCH_SUCCESS', () => {
         const mockActionTrue = {
-            type: _ACTIONS.DATA_FETCH_SUCCESS,
             payload: {
                 dataFetchSuccess: true
-            }
+            },
+            type: _ACTIONS.DATA_FETCH_SUCCESS,
         };
 
         const mockActionFalse = {
@@ -106,10 +106,10 @@ describe('searchRobots reducer', () => {
 
     it('should correctly handle action POPULATE_ROBOTS', () => {
         const mockAction = {
-            type: _ACTIONS.POPULATE_ROBOTS,
             payload: {
                 robots
-            }
+            },
+            type: _ACTIONS.POPULATE_ROBOTS,
         };
 
         expect(_REDUCERS.searchRobots(initialState, mockAction)).toEqual({

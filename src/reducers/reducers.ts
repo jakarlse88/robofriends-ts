@@ -1,14 +1,42 @@
 import * as _ACTIONS from "../actions/types";
 
-export const initialState = {
-    robots: [],
-    query: '',
-    dataIsFetching: false,
+interface IState {
+    robots: IRobots[],
+    query: string,
+    dataIsFetching: boolean,
+    dataFetchDidErr: boolean,
+    dataFetchSuccess: boolean | null;
+}
+
+export const initialState:IState = {
     dataFetchDidErr: false,
-    dataFetchSuccess: null
+    dataFetchSuccess: null,
+    dataIsFetching: false,
+    query: '',
+    robots: [],
 };
 
-export const searchRobots = (state = initialState, action = {}) => {
+// interface Payload {
+//     query?: string,
+//     dataIsFetching?: boolean,
+//     dataFetchDidErr?: boolean,
+//     dataFetchSuccess?: boolean,
+//     robots?: Array<Robots>
+// };
+
+// interface FluxStandardAction {
+//     type: string,
+//     payload: Payload
+// };
+
+interface IRobots {
+    id: number,
+    name: string,
+    username: string,
+    email: string
+};
+
+export const searchRobots = (state:any = initialState, action:any = {}) => {
     switch (action.type) {
         case _ACTIONS.SET_QUERY:
             return {

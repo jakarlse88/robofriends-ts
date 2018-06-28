@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 
-const Card = ({ name, email, id }) => {
+const Card = ({ name, email, id }:{name: string, email: string, id: number}): any => {
   return (
     <div className='tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5'>
       <img alt='robots' src={`https://robohash.org/${id}?size=200x200`} />
