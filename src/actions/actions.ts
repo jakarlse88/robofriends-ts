@@ -1,11 +1,5 @@
 import * as _ACTIONS from './types';
-
-interface IRobots {
-    id: number,
-    name: string,
-    username: string,
-    email: string
-};
+import { IRobots } from '../components/mainpage/MainPage';
 
 interface IPayload {
     query?: string,

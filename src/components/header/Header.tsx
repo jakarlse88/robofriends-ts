@@ -6,7 +6,7 @@ export default class Header extends React.Component {
         return false;
     }
 
-    public render() {
+    public render(): JSX.Element {
         return (
             <React.Fragment>
                 <h1 className='f1'>RoboFriends</h1>

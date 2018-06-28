@@ -4,13 +4,7 @@ import { connect } from 'react-redux';
 import * as ACTIONS from '../actions/actions';
 import * as React from 'react';
 import MainPage from '../components/mainpage/MainPage';
-
-interface IRobots {
-    id: number,
-    name: string,
-    username: string,
-    email: string
-};
+import { IRobots } from '../components/mainpage/MainPage';
 
 interface IAppProps {
 	query: string,
@@ -19,13 +13,13 @@ interface IAppProps {
 };
 
 class App extends React.Component<IAppProps> {
-	constructor(props: any) {
+	constructor(props: IAppProps) {
 		super(props);
 
 		props.actions.fetchData('https://jsonplaceholder.typicode.com/users');
 	}
 
-	public render() {
+	public render(): JSX.Element {
 		return <MainPage 
 			query={this.props.query}
 			robots={this.props.robots}

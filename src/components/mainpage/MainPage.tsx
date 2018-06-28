@@ -8,7 +8,7 @@ import * as React from 'react';
 import Scroll from '../scroll/Scroll';
 import SearchBox from '../searchbox/SearchBox';
 
-interface IRobots {
+export interface IRobots {
     id: number,
     name: string,
     username: string,
@@ -26,7 +26,7 @@ export default class MainPage extends React.Component<IMainPageProps> {
     constructor(props: any) {
         super(props);
     }
-    
+
     public filterRobots(robots: IRobots[]): IRobots[] {
         const { query } = this.props;
         const filteredRobots: IRobots[] = robots.length ?
@@ -37,9 +37,12 @@ export default class MainPage extends React.Component<IMainPageProps> {
         return filteredRobots;
     }
 
-    public render() {
+    public onSearchChange = (event: React.SyntheticEvent<HTMLInputElement>): void => {
+        this.props.actions.setQuery(event.currentTarget.value);
+    }
+
+    public render(): JSX.Element {
         const {
-            actions,
             robots,
         } = this.props;
 
@@ -49,7 +52,7 @@ export default class MainPage extends React.Component<IMainPageProps> {
                 <div className='tc'>
                     <Header />
                     <SearchBox
-                        searchChange={(e: any) => actions.setQuery(e.target.value)} />
+                        searchChange={(e: any) => this.onSearchChange(e)} />
                     <Scroll>
                         <ErrorBoundary>
                             <CardList robots={this.filterRobots(robots)} />

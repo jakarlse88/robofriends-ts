@@ -13,7 +13,7 @@ class ErrorBoundary extends React.Component<{}, { hasError: boolean }> {
         this.setState({ hasError: true });
     };
 
-    public render() {
+    public render(): JSX.Element | any {
         if (this.state.hasError) {
             return <h1>An error has occurred.</h1>;
         } 

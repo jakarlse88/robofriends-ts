@@ -30,7 +30,7 @@ export default class CounterButton extends React.Component<ICounterButtonProps, 
         });
     };
 
-    public render() {
+    public render(): JSX.Element {
         return (
             <button
                 color={this.props.color}
